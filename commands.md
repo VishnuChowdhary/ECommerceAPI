@@ -5,6 +5,7 @@ pip install djangorestframework
 pip install python-dotenv --To store the passwords and usernames and secret keys related to our application
 pip install pytest --Package for UnitTesting
 pip install django-mptt --To create Tree hierarchy in models
+pip intsall drf-spectacular --To Create documentation for our API
 
 # Commands
 
