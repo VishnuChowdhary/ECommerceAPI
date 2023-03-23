@@ -7,6 +7,7 @@ pip install pytest --Package for UnitTesting
 pip install django-mptt --To create Tree hierarchy in models
 pip intsall drf-spectacular --To Create documentation for our API
 pip install coverage --To check required tests to perform on API
+pip install factory-boy --To get Replica of our original database tables
 
 # Commands
 
