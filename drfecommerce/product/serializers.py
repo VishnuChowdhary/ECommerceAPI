@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Brand, Category, Product, ProductLine
+from .models import Brand, Category, Product, ProductLine, ProductImage
 
 class CategorySerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source='name') # To change name in Url
@@ -12,11 +12,16 @@ class BrandSerializer(serializers.ModelSerializer):
         model = Brand
         exclude = ('id',)
         
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductImage
+        exclude = ('id', "productline")
+        
 class ProductLineSerializer(serializers.ModelSerializer):
-
+    product_image = ProductImageSerializer(many=True)
     class Meta:
         model = ProductLine
-        exclude = ('id', 'is_active', 'product')
+        fields = ("price", "sku", "stock_qty", "order", "product_image")
         
 class ProductSerializer(serializers.ModelSerializer):
     brand_name = serializers.CharField(source='brand.name')
