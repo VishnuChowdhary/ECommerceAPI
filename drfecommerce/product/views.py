@@ -34,7 +34,10 @@ class ProductView(viewsets.ViewSet):
     lookup_field = "slug"
     
     def retrieve(self, request, slug=None):
-        serializer = ProductSerializer(self.queryset.filter(slug=slug).select_related("category", "brand"), many=True)
+        serializer = ProductSerializer(
+            Product.queryset.filter(slug=slug)
+            .select_related("category", "brand")
+            .prefetch_related("product_line__product_image"), many=True)
         # x = self.queryset.filter(slug=slug)
         # sqlformatted = format(str(x.query), reindent=True)
         # print(highlight(sqlformatted, SqlLexer(), TerminalFormatter()))
